@@ -53,7 +53,7 @@ def fetch_videos():
 
     # Save Data
     df = pd.DataFrame(all_data)
-    filename = f"C:/Users/Asus/OneDrive/Desktop/c++/youtube_dataset_{time.strftime('%Y-%m-%d_%H-%M')}.csv"
+    filename = f"youtube_dataset_{time.strftime('%Y-%m-%d_%H-%M')}.csv"
     # os.makedirs("youtube_data", exist_ok=True)  # Ensure folder exists
     df.to_csv(filename, index=False)
     print(f"✅ Data saved to {filename}")
