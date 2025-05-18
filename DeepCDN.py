@@ -1,8 +1,3 @@
-
-
-from google.colab import drive
-drive.mount('/content/drive')
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -28,7 +23,7 @@ np.random.seed(42)
 tf.random.set_seed(42)
 
 # Read the dataset (adapt path as needed)
-file_path = '/content/drive/MyDrive/trimmed_dataset_5000.csv'
+file_path = 'DATASET.csv'
 df = pd.read_csv(file_path, on_bad_lines='skip', engine='python')
 
 print("Original shape:", df.shape)
@@ -39,9 +34,9 @@ df_clean = df.drop(columns=['description']).dropna().copy()
 # print("Shape after cleaning:", df_clean.shape)
 
 # Print shape and missing value summary
-# print("📊 Original Dataset Description (Before Cleaning)\n")
+# print("Original Dataset Description (Before Cleaning)\n")
 print(f"Shape: {df.shape[0]} rows × {df.shape[1]} columns")
-# print("\n🧮 Null values per column:")
+# print("\n Null values per column:")
 # print(df.isnull().sum())
 
 # Print column types and memory usage
@@ -129,9 +124,9 @@ df_clean['tags_clean'] = df_clean['tags'].apply(clean_text)
 df_clean['text_combined'] = df_clean['title_clean'] + ' ' + df_clean['tags_clean']
 
 # Print shape and missing value summary
-# print("📊 Original Dataset Description (Before Cleaning)\n")
+# print("Original Dataset Description (Before Cleaning)\n")
 print(f"Shape: {df_clean.shape[0]} rows × {df_clean.shape[1]} columns")
-# print("\n🧮 Null values per column:")
+# print("\nNull values per column:")
 # print(df.isnull().sum())
 
 # Print column types and memory usage
