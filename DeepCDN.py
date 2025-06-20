@@ -6,14 +6,14 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report, roc_auc_score, accuracy_score, precision_score, recall_score, f1_score
 from sklearn.utils.class_weight import compute_class_weight
 import tensorflow as tf
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Embedding, LSTM, Bidirectional, Conv1D, MaxPooling1D
-from tensorflow.keras.layers import Dense, Concatenate, GlobalMaxPooling1D, Dropout, BatchNormalization
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.regularizers import l2
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint, LearningRateScheduler
+from tensorflow.keras.models import Model # type: ignore
+from tf.keras.layers import Input, Embedding, LSTM, Bidirectional, Conv1D, MaxPooling1D # type: ignore
+from tf.keras.layers import Dense, Concatenate, GlobalMaxPooling1D, Dropout, BatchNormalization # type: ignore
+from tf.keras.preprocessing.text import Tokenizer# type: ignore
+from tf.keras.preprocessing.sequence import pad_sequences # type: ignore
+from tf.keras.optimizers import Adam # type: ignore
+from tf.keras.regularizers import l2 # type: ignore
+from tf.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint, LearningRateScheduler # type: ignore
 import nltk
 from nltk.corpus import stopwords
 import re
@@ -22,7 +22,7 @@ import re
 np.random.seed(42)
 tf.random.set_seed(42)
 
-# Read the dataset (adapt path as needed)
+# Read the dataset
 file_path = 'DATASET.csv'
 df = pd.read_csv(file_path, on_bad_lines='skip', engine='python')
 
@@ -84,7 +84,7 @@ df_clean['trending_date'] = pd.to_datetime(df_clean['trending_date'], errors='co
 df_clean = df_clean.dropna(subset=['publishedAt', 'trending_date'])
 print(f"Shape after date cleaning: {df_clean.shape}")
 
-# Calculate days since published (relative to April 10, 2025)
+# Calculate days since published (relative to April 10, 2025)-
 reference_date = pd.Timestamp('2025-04-10', tz='UTC')
 df_clean['days_since_published'] = (reference_date - df_clean['publishedAt']).dt.days
 
@@ -232,7 +232,7 @@ print(f"Numerical Features: {selected_features}")
 print(f"Text Feature Used: 'text_combined'")
 print(f"Target Variable: 'is_popular'")
 
-# Split data with stratification
+# Split data with stratification(balanacing in both train and test dataset)
 X_num_train, X_num_test, X_text_train, X_text_test, y_train, y_test = train_test_split(
     X_num, X_text, y, test_size=0.2, random_state=42, stratify=y
 )
