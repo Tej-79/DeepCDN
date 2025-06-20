@@ -91,7 +91,7 @@ The DeepCDN model was trained using **5-fold cross-validation** and evaluated us
        0       0.87      0.83      0.85       250
        1       0.84      0.87      0.85       250
 
-accuracy                           0.85       500
+    accuracy   0.85       500
 
 
 
