@@ -7,7 +7,7 @@ from sklearn.metrics import classification_report, roc_auc_score, accuracy_score
 from sklearn.utils.class_weight import compute_class_weight
 import tensorflow as tf
 from tensorflow.keras.models import Model # type: ignore
-from tf.keras.layers import Input, Embedding, LSTM, Bidirectional, Conv1D, MaxPooling1D # type: ignore
+from tf.keras.layers import Input, Embedding, Bidirectional, Conv1D, MaxPooling1D # type: ignore
 from tf.keras.layers import Dense, Concatenate, GlobalMaxPooling1D, Dropout, BatchNormalization # type: ignore
 from tf.keras.preprocessing.text import Tokenizer# type: ignore
 from tf.keras.preprocessing.sequence import pad_sequences # type: ignore
@@ -51,9 +51,7 @@ print(df.describe())
 print("\n Summary of Categorical Columns:")
 print(df.describe(include=['object']))
 
-# Optional: Preview first few rows
-# print("\n First 5 Rows:")
-# print(df.head())
+
 
 # Feature Engineering
 # ==================
@@ -461,7 +459,6 @@ print(f"Cache Miss Ratio: {miss_ratio:.4f}")
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ... (Previous code) ...
 
 # Flatten y_test to 1D array before plotting:
 y_test_flat = y_test.flatten()  # <-- Add this line to define y_test_flat
